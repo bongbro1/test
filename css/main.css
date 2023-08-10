@@ -1,0 +1,506 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    scroll-behavior: smooth;
+}
+ul {
+    list-style-type: none;
+}
+
+/* CSS HEADER */
+#header .nav {
+    height: 48px;
+    background-color: #000;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.nav>li>a {
+    display: inline-block;
+    padding: 15px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+}
+.nav li:hover a.item {
+    background-color: #ccc;
+    color: #000;
+}
+.nav .search{
+    margin-left: auto;
+}
+.nav .search i {
+    padding: 0 5px;
+    font-weight: bolder;
+    font-size: 12px;
+}
+.nav .search:hover{
+    color: #fff;
+    background-color: #f44336;
+}
+.nav .subnav {
+    width: 130px;
+    background: #fff;
+    display: none;
+    box-shadow: 0 3px 3px #ccc;
+}
+.subnav a {
+    width: 100%;
+    display: inline-block;
+    padding: 8px 16px;
+    color: #000;
+    text-decoration: none;
+}
+.subnav a:hover {
+    background-color: #ccc;
+}
+.nav .more:hover .subnav {
+    position: relative;
+    display: block;
+    z-index: 5;
+}
+
+/* CSS SLIDER*/
+div.slider {
+    padding-top: 50%;
+    background-image: url(../source/img/la.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-top: 30px;
+}
+div.slogan {
+    position: absolute;
+    width: 100%;
+    bottom: 4vw;
+    text-align: center;
+    color: #fff;
+}
+div.slogan > h1 {
+    font-size: 20px;
+    padding-bottom: 15px;
+    font-weight: 200;
+}
+div.slogan > p {
+    font-weight: bolder;
+    font-size: 18px;
+}
+.p-10 {
+    padding: 100px 16px;
+}
+
+/* CSS CONTENT */
+
+div.content {
+    margin: 0 auto;
+    width: 50%;
+}
+div.content > h2 {
+    text-align: center;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 30px;
+    letter-spacing: 5px;
+}
+div.content > .slogan {
+    text-align: center;
+    font-style: italic;
+    padding: 24px 0 30px 0;
+    opacity: 0.5;
+}
+div.content > p {
+    font-style: normal;
+    text-align: justify;
+}
+div.members {
+    display: flex;
+    justify-content: space-around;
+}
+div.member {
+    width: 20%;
+    text-align: center;
+}
+div.member > p {
+    padding: 40px 0 15px 0;
+}
+div.member > img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+div.tour {
+    background: #000;
+    color: #fff;
+}
+div.tour  ul {
+    margin-top: 10px;
+    background-color: #fff;
+    color: #747474;
+}
+div.tour ul > li {
+    padding: 10px 12px;
+    border-bottom: solid 1px #ccc;
+}
+div.tour ul .sold-out {
+    background-color: #f44336;
+    color: #fff;
+    padding: 2px 12px;
+    margin-left: 16px;
+}
+div.tour ul .quantity {
+    float: right;
+    margin: -5px 16px 0 0;
+    background-color: #000;
+    color: #fff;
+    display: block;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 50%;
+}
+div.tours {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+div.tour-item {
+    width: 32%;
+    background-color: #fff;
+    color: #000;
+}
+.tour-item > img {
+    width: 100%;
+}
+.tour-item > img:hover {
+    opacity: 0.8;
+    
+}
+.tour-item > .about-tour {
+    padding: 20px;
+}
+.about-tour > h2 {
+    font-size: 16px;
+}
+.about-tour > .time {
+    padding: 16px 0;
+    opacity: 0.5;
+}
+.about-tour > .btn-buy {
+    border: none;
+    background-color: #000;
+    color: #fff;
+    margin-top: 16px;
+    padding: 10px 12px;
+}
+.about-tour > .btn-buy:hover {
+    background-color: #ccc;
+    color: #000;
+}
+/* CSS CONTACT */
+div.contact-infos {
+    display: flex;
+    justify-content: space-around;
+}
+.col1 {
+    width: 100%;
+}
+.col2 {
+    width: 47%;
+    float: left;
+}
+.mgl-10 {
+    margin-left: 6%;
+}
+.mgr-10 {
+    margin-right: 10px;
+}
+
+div.contact-infos > .contact-item {
+    width: 50%;
+    padding-top: 20px;
+}
+
+ul.contact-item > li {
+    padding: 4px;
+    font-size: 17px;
+    color: #000;
+}
+ul.contact-item > li > i {
+    padding-right: 12px;
+}
+div.contact-item input {
+    margin-bottom: 10px;
+    padding: 8px;
+}
+div.contact-item > button {
+    float: right;
+    background-color: #000;
+    color: #fff;
+    margin-top: 10px;
+    padding: 10px 12px;
+    border: none;
+}
+div.contact-item > button:hover {
+    background-color: #ccc;
+    color: #000;
+}
+#footer > img {
+    width: 100%;
+    opacity: 0.9;
+}
+div.footer-social {
+    padding: 80px 0;
+    text-align: center;
+    background-color: #f1f1f1;
+    opacity: 0.8;
+}
+div.footer-social li > i {
+    font-size: 20px;
+}
+div.footer-social li {
+    display: inline-block;
+    padding: 0 4px 20px 0;
+}
+div.footer-social li:hover {
+    opacity: 0.6;
+}
+div.footer-social a {
+    color: #000;
+}
+
+/* CSS MODAL */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+.modal-container {
+    background-color: #fff;
+    margin: 0 auto;
+    width: 55%;
+    transform: translateY(35%);
+    position: relative;
+    animation: modalFadeIn ease 0.5s;
+}
+.modal-container > .close > i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 16px;
+    color: #fff;
+    font-weight: 900;
+    font-size: 15px;
+}
+.modal-container > .close > i:hover {
+    background-color: #ccc;
+    color: #000;
+    opacity: 0.8;
+}
+.modal-container > .header {
+    background-color: #009688;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0;
+}
+.modal-container > .header > h2{
+    font-size: 30px;
+    font-weight: 300;
+}
+.modal-container > .header i {
+    font-size: 30px;
+    padding-right: 20px;
+}
+.modal-container > .body {
+    padding: 10px;
+    overflow: hidden;
+}
+.body > input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    margin: 12px 0 20px;
+}
+.body > .pay-btn > i {
+    font-weight: bolder;
+}
+.body > .pay-btn {
+    background-color: #009688;
+    text-align: center;
+    border: none;
+    color: #fff;
+    width: 100%;
+    padding: 16px 0;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.body > .pay-btn:hover {
+    color: #000;
+    background-color: #ccc;
+}
+
+.body > .btn-close {
+    border: none;
+    background-color: #f44336;
+    color: #fff;
+    margin-top: 30px;
+    padding: 8px 14px;
+    float: left;
+    cursor: pointer;
+}
+
+.body > .btn-close:hover {
+    opacity: 0.8;
+}
+
+.body > .btn-close > i {
+    font-weight: bolder;
+    font-size: 10px;
+    padding-left: 3px;
+}
+
+.body > p {
+    float: right;
+    margin-top: 30px;
+}
+
+.body > p > a{
+    color: #2196F3;
+}
+
+.modal.open {
+    display: block;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-130px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(35%);
+    }
+}
+div.mobile {
+    display: none;
+}
+/* Tablet*/
+@media (min-width: 740px) and (max-width: 1023px) {
+    
+}
+
+/* Mobile */
+@media (max-width: 740px) {
+    div.mobile {
+        display: block;
+    }
+    
+    ul.mobile-nav {
+        background-color: #000;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 2;
+    }
+    ul.mobile-nav > li a{
+        color: #fff;
+        text-decoration: none;
+        padding: 15px 24px;
+        display: block;
+        text-transform: uppercase;
+    }
+
+    ul.mobile-nav > li + li, div.pc {
+        display: none;
+    }
+
+    
+    div.mobile-menu > i {
+        display: inline-block;
+        font-size: 18px;
+        color: #fff;
+        padding: 15px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 5;
+    }
+
+    div.mobile-menu > i:hover {
+        background-color: #ccc;
+        color: #000;
+    }
+
+    ul.mobile-nav.open > li + li {
+        display: block;
+    }
+
+    /* CSS THEBAND */
+    div.content {
+        width: 100%;
+        padding: 100px 16px;
+    }
+
+    div.members {
+        display: block;
+        padding: 32px 0;
+    }
+
+    div.member {
+        width: 100%;
+        padding: 0 70px;
+    }
+
+    /* CSS TOURS */
+    div.tours {
+        display: block;
+    }
+
+    div.tour-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    div.contact-infos {
+        display: block;
+    }
+    
+    div.contact-infos > .contact-item {
+        width: 100%;
+    }
+    
+
+    .col2 {
+        width: 100%;
+        margin: 0;
+    }
+
+    .modal-container {
+        background-color: #fff;
+        width: 95%;
+        transform: translateY(10%);
+        animation: modalFadeIns ease 0.5s;
+    }
+
+    @keyframes modalFadeIns {
+        from {
+            opacity: 0;
+            transform: translateY(-130px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(10%);
+        }
+    }
+}
