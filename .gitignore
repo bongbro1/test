@@ -1,0 +1,65 @@
+# Binaries
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# Build outputs
+*.log
+*.cache
+*.csproj.user
+
+# User-specific files
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet Packages
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+
+# Publish outputs
+*.publish/
+*.pubxml
+*.pubxml.user
+
+# Database files
+*.mdf
+*.ldf
+
+# Visual Studio temporary files
+.vs/
+.idea/
+
+# ASP.NET runtime secrets
+
+secrets.json
+
+
+# Node modules
+/node_modules/
+
+# Các tệp biên dịch của Angular
+/dist/
+/build/
+
+/# Tệp cấu hình IDE hoặc editor
+/.idea/
+/.vscode/
+
+# Các tệp hệ thống của OS
+.DS_Store
+Thumbs.db
+
+# Tệp log
+npm-debug.log
+yarn-error.log
+
+# Các tệp môi trường
+.env

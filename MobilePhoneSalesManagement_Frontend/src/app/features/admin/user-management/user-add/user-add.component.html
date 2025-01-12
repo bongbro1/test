@@ -1,0 +1,125 @@
+<div class="card shadow border-0">
+  <div class="card-body">
+    <h4 class="text-center fw-bold mb-4">Thêm người dùng</h4>
+    <form (ngSubmit)="submitForm()">
+      <div class="row">
+        <!-- Thông tin tài khoản -->
+        <div class="col-md-6 border-end">
+          <h5 class="fw-bold mb-3">Thông tin tài khoản</h5>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Nhập tên email"
+              [(ngModel)]="user.email"
+              name="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Nhập mật khẩu"
+              [(ngModel)]="user.passwordHash"
+              name="password"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="status" class="form-label">Trạng thái:</label>
+            <select
+              class="form-select type_modal"
+              id="status"
+              [(ngModel)]="user.status"
+              name="status"
+            >
+              <option [value]="true">Hoạt động</option>
+              <option [value]="false">Ngừng hoạt động</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Vai trò:</label>
+            <select
+              class="form-select type_modal"
+              id="role"
+              [(ngModel)]="user.role"
+              name="role"
+            >
+              <option value="client">Khách hàng</option>
+              <option value="admin">Quản trị viên</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Thông tin chi tiết -->
+        <div class="col-md-6">
+          <h5 class="fw-bold mb-3">Thông tin chi tiết</h5>
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Họ và tên:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              placeholder="Nhập vào họ và tên"
+              [(ngModel)]="user.fullName"
+              name="fullName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="birthDate" class="form-label">Ngày sinh:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="birthDate"
+              [(ngModel)]="user.dateOfBirth"
+              name="birthDate"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Giới tính:</label>
+            <select
+              class="form-select type_modal"
+              id="gender"
+              [(ngModel)]="user.gender"
+              name="gender"
+            >
+              <option>Nam</option>
+              <option>Nữ</option>
+              <option>Khác</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label">Địa chỉ:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Nhập vào địa chỉ"
+              [(ngModel)]="user.address"
+              name="address"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Số điện thoại:</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              placeholder="Nhập vào số điện thoại"
+              [(ngModel)]="user.phoneNumber"
+              name="phone"
+            />
+          </div>
+        </div>
+      </div>
+      <!-- Buttons -->
+      <div class="mt-4 text-end">
+        <button type="reset" class="btn btn-secondary me-2">Làm mới</button>
+        <button type="submit" class="btn btn-primary">Thêm người dùng</button>
+      </div>
+    </form>
+  </div>
+</div>

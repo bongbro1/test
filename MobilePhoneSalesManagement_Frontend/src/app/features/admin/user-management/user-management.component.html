@@ -1,0 +1,244 @@
+<div class="mb-5 mt-3">
+  <div class="content">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="mb-2">
+                <h4 class="text-center mt-3 mb-4">Danh sách khách hàng</h4>
+                <div class="row mb-3">
+                  <div class="col-11 d-flex align-items-center">
+                    <div class="show-page ml-3">
+                      Hiển thị:
+                      <span>
+                        <select id="show" (change)="onPageSizeChange($event)">
+                          <option value="10">10</option>
+                          <option value="20">20</option>
+                          <option value="50">50</option>
+                        </select>
+                      </span>
+                      bản ghi
+                    </div>
+
+                    <div class="show-page arrange ml-4">
+                      Online cách đây:
+                      <span>
+                        <select id="show" (change)="onLastActiveChange($event)">
+                          <option value="0">Chọn</option>
+                          <option value="7">1 tuần</option>
+                          <option value="30">1 tháng</option>
+                          <option value="90">3 tháng</option>
+                        </select>
+                      </span>
+                    </div>
+
+                    <div class="show-page ml-4">
+                      Tìm kiếm:
+                      <span>
+                        <input
+                          id="myInput"
+                          class="input_serach"
+                          type="text"
+                          placeholder="Nhập số điện thoại hoặc email"
+                          (input)="onSearchKeyChange($event)"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-1 text-right">
+                    <button
+                      class="btn btn-success sizeTh1 mr-2"
+                      value="true"
+                      data-placement="top"
+                      title="Thêm người dùng"
+                      (click)="openUserModal()"
+                    >
+                      <i class="txt-center fas fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <table
+                  s
+                  id="bootstrap-data-table"
+                  class="table table-hover table-text-center"
+                >
+                  <thead class="thead-light">
+                    <tr>
+                      <th>
+                        <input
+                          type="checkbox"
+                          class="check_all"
+                          (change)="selectAll($event)"
+                          [checked]="allSelected"
+                        />
+                      </th>
+                      <th>
+                        <span
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Mã khách hàng"
+                          >Mã KH</span
+                        >
+                      </th>
+                      <th>Họ tên</th>
+                      <th>Số điện thoại</th>
+                      <th>Địa chỉ mặc định</th>
+                      <th>Trạng thái</th>
+                      <th>Email</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody id="content-table">
+                    <tr *ngFor="let user of users">
+                      <td>
+                        <input
+                          type="checkbox"
+                          [checked]="isChecked(user.userId)"
+                          (change)="toggleSelection(user.userId, $event)"
+                        />
+                      </td>
+                      <td>{{ user.userId }}</td>
+                      <td>{{ user.fullName }}</td>
+                      <td>{{ user.phoneNumber }}</td>
+                      <td>{{ user.address }}</td>
+                      <td>{{ user.status ? "Hoạt động" : "Đang khóa" }}</td>
+                      <td>{{ user.email }}</td>
+                      <td class="row" style="border: none">
+                        <div style="margin: auto">
+                          <button
+                            *ngIf="user.status"
+                            class="btn btn-danger sizeTh1"
+                            (click)="openModal(user, 'block')"
+                            title="Block"
+                          >
+                            <i class="fas fa-lock"></i>
+                          </button>
+                          <button
+                            *ngIf="!user.status"
+                            class="btn btn-success sizeTh1"
+                            (click)="openModal(user, 'unblock')"
+                            title="Unblock"
+                          >
+                            <i class="fas fa-unlock"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="action-container">
+                  <button class="btn btn-red">Xóa</button>
+                  <button class="btn btn-blue">
+                    Xuất file
+                    <i class="fas fa-file-excel"></i>
+                  </button>
+                  <button
+                    class="btn btn-blue"
+                    (click)="blockOrUnblockSelectedUsers()"
+                  >
+                    Block/ Unblock
+                  </button>
+
+                  <div class="pagination">
+                    <button (click)="previousPage()">Trước</button>
+
+                    <!-- Hiển thị trang hiện tại -->
+                    <span class="active">{{ currentPage }}</span>
+
+                    <!-- Không hiển thị dấu ... và trang cuối nếu chỉ có 1 trang -->
+                    <span *ngIf="totalPages > 1">...</span>
+                    <span *ngIf="totalPages > 1">{{ totalPages }}</span>
+
+                    <button (click)="nextPage()">Sau</button>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+      <!-- .animated -->
+    </div>
+    <!-- .content -->
+
+    <!-- Modal block, unblock -->
+    <div
+      class="modal fade"
+      id="confirmationModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      [ngClass]="{ show: isModalOpen }"
+      [style.display]="isModalOpen ? 'block' : 'none'"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Xác nhận {{ action === "block" ? "chặn" : "mở khóa" }}
+            </h5>
+            <button
+              type="button"
+              class="close"
+              (click)="closeModal()"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Bạn có muốn xác nhận
+            {{ action === "block" ? "chặn" : "mở khóa" }} user này không?
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="closeModal()"
+            >
+              Hủy
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="confirmAction()"
+            >
+              Xác nhận
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add -->
+    <!-- Modal Add, Edit người dùng -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog" style="width: 70%; max-width: unset;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              {{ selectedUser ? "Chỉnh sửa" : "Thêm mới" }} người dùng
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="userModal"
+              (click)="closeUserModal()"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <app-user-add></app-user-add>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /#right-panel -->
+</div>

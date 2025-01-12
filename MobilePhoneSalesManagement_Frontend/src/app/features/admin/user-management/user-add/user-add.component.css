@@ -1,0 +1,13 @@
+select {
+    width: 100%;
+    height: 38px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0 8px;
+}
+.text-end {
+    text-align: right;
+}
+.me-2 {
+    margin-right: 0.7rem;
+}
